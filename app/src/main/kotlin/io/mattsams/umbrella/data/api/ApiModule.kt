@@ -2,7 +2,6 @@ package io.mattsams.umbrella.data.api
 
 import dagger.Module
 import dagger.Provides
-import io.mattsams.umbrella.AppScope
 import javax.inject.Named
 import javax.inject.Singleton
 

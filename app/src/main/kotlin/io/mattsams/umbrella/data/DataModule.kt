@@ -3,7 +3,6 @@ package io.mattsams.umbrella.data
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
-import io.mattsams.umbrella.AppScope
 import io.mattsams.umbrella.data.api.ApiModule
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
 import retrofit2.Retrofit
