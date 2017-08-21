@@ -20,20 +20,54 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    sourceSets {
+        main.java.srcDirs += ["src/main/kotlin"]
+    }
 }
 
 ext {
     android_support_version = '26.+'
+    dagger2_version = '2.11'
+    espresso_version = '2.2.2'
+    gson_version = '2.8.1'
     junit_version = '4.12'
+    retrofit_version = '2.3.0'
+    threetenabp_version = '1.0.5'
+    timber_version = '4.5.1'
 }
 
 dependencies {
+    // Local
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+
+    // Testing
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile "junit:junit:$junit_version"
 
+    // Kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android Compat
     compile "com.android.support:appcompat-v7:$android_support_version"
     compile "com.android.support:design:$android_support_version"
+    compile "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+
+    // API
+    compile "com.google.code.gson:gson:$gson_version"
+    compile "com.squareup.retrofit2:retrofit:$retrofit_version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // DI
+    compile "com.google.dagger:dagger:$dagger2_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger2_version"
+
+    // Logging
+    compile "com.jakewharton.timber:timber:$timber_version"
+}
+
+kapt {
+    generateStubs = true
 }
