@@ -1,10 +1,11 @@
 package io.mattsams.umbrella.presentation.forecast.model
 
+import io.mattsams.umbrella.UmbrellaPreferences
 import io.mattsams.umbrella.UmbrellaPreferencesImpl
 import io.mattsams.umbrella.data.model.HourlyForecast
 import org.threeten.bp.LocalDate
 
-class DailyForecastMapper(prefs: UmbrellaPreferencesImpl) {
+class DailyForecastMapper(prefs: UmbrellaPreferences) {
     private val hourlyMapper = HourlyForecastMapper(prefs)
 
     fun map(forecast: List<HourlyForecast>): List<DailyForecastModel> {

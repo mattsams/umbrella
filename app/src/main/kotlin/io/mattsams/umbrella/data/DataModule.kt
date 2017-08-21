@@ -6,6 +6,7 @@ import dagger.Provides
 import io.mattsams.umbrella.data.api.ApiModule
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
@@ -17,6 +18,7 @@ class DataModule {
     fun providesRetrofit(gson: Gson, @Named("API_URL") baseUrl: String): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
     }

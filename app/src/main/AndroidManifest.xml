@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="io.mattsams.umbrella">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".UmbrellaApp"
         android:allowBackup="true"

@@ -73,6 +73,7 @@ dependencies {
     compile "com.google.code.gson:gson:$gson_version"
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
 
     // DI
     compile "com.google.dagger:dagger:$dagger2_version"

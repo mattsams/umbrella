@@ -40,6 +40,10 @@ class ConditionsWidget(context: Context, attrs: AttributeSet) : AppBarLayout(con
         presenter.detach(this)
     }
 
+    override fun setLocation(location: String) {
+        toolbar.title = location
+    }
+
     override fun setTemperature(temperature: String) {
         temperatureView.text = temperature
     }

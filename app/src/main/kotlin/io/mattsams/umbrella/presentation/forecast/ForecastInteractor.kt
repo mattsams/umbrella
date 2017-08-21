@@ -6,6 +6,5 @@ import io.mattsams.umbrella.presentation.forecast.model.DailyForecastModel
 import io.reactivex.Single
 
 interface ForecastInteractor : Interactor {
-    fun fetchCurrent(postalCode: String): Single<CurrentConditionsModel>
-    fun fetchForecast(postalCode: String): Single<List<DailyForecastModel>>
+    fun fetchForecast(): Single<List<DailyForecastModel>>
 }

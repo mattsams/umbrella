@@ -15,8 +15,9 @@
             android:id="@+id/conditions_widget"
             layout="@layout/widget_conditions"/>
 
-        <io.mattsams.umbrella.view.forecast.ForecastLayout
+        <include
             android:id="@+id/forecast_layout"
+            layout="@layout/view_forecast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/conditions_widget"/>

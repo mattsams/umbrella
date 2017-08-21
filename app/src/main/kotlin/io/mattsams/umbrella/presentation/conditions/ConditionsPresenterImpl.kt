@@ -1,21 +1,23 @@
 package io.mattsams.umbrella.presentation.conditions
 
-import io.mattsams.umbrella.EventBus
 import io.mattsams.umbrella.mvp.SimplePresenter
-import io.mattsams.umbrella.temperatureColor
+import io.mattsams.umbrella.presentation.conditions.model.CurrentConditionsModel
 import io.mattsams.umbrella.toDegrees
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class ConditionsPresenterImpl(private val scheduler: Scheduler)
-    : SimplePresenter<ConditionsView>(), ConditionsPresenter {
+class ConditionsPresenterImpl(
+        private val interactor: ConditionsInteractor,
+        private val scheduler: Scheduler
+) : SimplePresenter<ConditionsView>(), ConditionsPresenter {
 
     override fun attach(view: ConditionsView) {
         super.attach(view)
 
         rx(
-                EventBus.listen<ConditionsChanged>()
+                interactor
+                        .fetchCurrent()
                         .subscribeOn(Schedulers.io())
                         .observeOn(scheduler)
                         .subscribe({
@@ -26,11 +28,12 @@ class ConditionsPresenterImpl(private val scheduler: Scheduler)
         )
     }
 
-    private fun updateConditions(conditionsChanged: ConditionsChanged) {
+    private fun updateConditions(conditions: CurrentConditionsModel) {
         view()?.let { view ->
-            view.setTemperature(conditionsChanged.temperature.toDegrees())
-            view.setConditions(conditionsChanged.conditions)
-            view.updateColor(temperatureColor(conditionsChanged.temperature))
+            view.setLocation(conditions.location)
+            view.setTemperature(conditions.temperature.toDegrees())
+            view.setConditions(conditions.conditions)
+            view.updateColor(conditions.colorId)
         }
     }
 }
