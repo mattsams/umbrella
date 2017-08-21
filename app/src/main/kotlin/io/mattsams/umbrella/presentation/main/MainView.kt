@@ -3,5 +3,6 @@ package io.mattsams.umbrella.presentation.main
 import io.mattsams.umbrella.mvp.MvpView
 
 interface MainView : MvpView {
-    fun loadForecastData(data: List<DailyForecastModel>)
+    fun loadCurrentConditions(currentConditions: CurrentConditionsModel)
+    fun loadForecast(forecast: List<DailyForecastModel>)
 }
