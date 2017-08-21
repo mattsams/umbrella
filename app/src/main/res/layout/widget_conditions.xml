@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.mattsams.umbrella.view.main.conditions.ConditionsWidget
+<io.mattsams.umbrella.view.conditions.ConditionsWidget
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/current_conditions_height"
-    android:background="?colorAccent"
-    android:theme="@style/AppTheme.AppBarOverlay"
-    app:popupTheme="@style/AppTheme.PopupOverlay">
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
-    <LinearLayout
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/conditions_widget_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:background="?colorPrimary"
+        android:minHeight="?actionBarSize"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-        <TextView
-            android:id="@+id/current_conditions_temperature"
-            style="@style/TextAppearance.AppCompat.Display3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin"/>
+    <TextView
+        android:id="@+id/conditions_widget_temperature"
+        style="@style/TextAppearance.AppCompat.Display3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin"
+        android:textColor="?android:textColorPrimaryInverse"/>
 
-        <TextView
-            android:id="@+id/current_conditions_conditions"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin2"/>
-    </LinearLayout>
-</io.mattsams.umbrella.view.main.conditions.ConditionsWidget>
+    <TextView
+        android:id="@+id/conditions_widget_conditions"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin2"
+        android:textColor="?android:textColorPrimaryInverse"/>
+
+</io.mattsams.umbrella.view.conditions.ConditionsWidget>
+
+
+

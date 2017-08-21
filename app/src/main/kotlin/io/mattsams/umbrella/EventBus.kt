@@ -1,10 +1,10 @@
 package io.mattsams.umbrella
 
 import io.reactivex.Observable
-import io.reactivex.subjects.PublishSubject
+import io.reactivex.subjects.BehaviorSubject
 
 object EventBus {
-    private val subject = PublishSubject.create<Any>().toSerialized()
+    private val subject = BehaviorSubject.create<Any>().toSerialized()
 
     fun emit(event: Any) = subject.onNext(event)
 

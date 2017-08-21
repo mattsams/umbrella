@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main.model
+package io.mattsams.umbrella.presentation.forecast.model
 
 import io.mattsams.umbrella.UmbrellaPreferencesImpl
 import io.mattsams.umbrella.Units

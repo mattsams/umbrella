@@ -9,6 +9,6 @@ fun Context.injector() = app().graph
 
 fun View.injector() = context.injector()
 
-fun Int.toDegrees() = "${this}\u0176"
+fun Int.toDegrees() = "${this}°"
 
 fun temperatureColor(temperature: Int) = if (temperature >= 60) R.color.warm else R.color.cool

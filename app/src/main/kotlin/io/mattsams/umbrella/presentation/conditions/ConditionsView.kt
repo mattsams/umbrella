@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main.conditions
+package io.mattsams.umbrella.presentation.conditions
 
 import android.support.annotation.ColorRes
 import io.mattsams.umbrella.mvp.MvpView

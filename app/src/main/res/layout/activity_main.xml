@@ -4,10 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.mattsams.umbrella.view.main.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:context="io.mattsams.umbrella.view.MainActivity">
 
-    <include
-        android:id="@+id/conditions_widget"
-        layout="@layout/widget_conditions"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/conditions_widget"
+            layout="@layout/widget_conditions"/>
+
+        <io.mattsams.umbrella.view.forecast.ForecastLayout
+            android:id="@+id/forecast_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/conditions_widget"/>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

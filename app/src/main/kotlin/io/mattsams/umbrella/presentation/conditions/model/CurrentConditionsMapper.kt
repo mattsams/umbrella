@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main.model
+package io.mattsams.umbrella.presentation.conditions.model
 
 import io.mattsams.umbrella.R
 import io.mattsams.umbrella.UmbrellaPreferencesImpl

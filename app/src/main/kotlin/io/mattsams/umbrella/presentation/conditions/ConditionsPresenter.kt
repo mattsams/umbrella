@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main.conditions
+package io.mattsams.umbrella.presentation.conditions
 
 import io.mattsams.umbrella.mvp.Presenter
 

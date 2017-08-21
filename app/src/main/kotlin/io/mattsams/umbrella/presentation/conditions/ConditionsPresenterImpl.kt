@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main.conditions
+package io.mattsams.umbrella.presentation.conditions
 
 import io.mattsams.umbrella.EventBus
 import io.mattsams.umbrella.mvp.SimplePresenter
@@ -6,6 +6,7 @@ import io.mattsams.umbrella.temperatureColor
 import io.mattsams.umbrella.toDegrees
 import io.reactivex.Scheduler
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 
 class ConditionsPresenterImpl(private val scheduler: Scheduler)
     : SimplePresenter<ConditionsView>(), ConditionsPresenter {
@@ -19,6 +20,8 @@ class ConditionsPresenterImpl(private val scheduler: Scheduler)
                         .observeOn(scheduler)
                         .subscribe({
                             updateConditions(it)
+                        }, {
+                            Timber.e(it)
                         })
         )
     }

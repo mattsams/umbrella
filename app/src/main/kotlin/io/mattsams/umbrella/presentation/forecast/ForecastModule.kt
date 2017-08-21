@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main
+package io.mattsams.umbrella.presentation.forecast
 
 import dagger.Module
 import dagger.Provides
@@ -9,16 +9,16 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
-class MainModule {
+class ForecastModule {
     @Provides
     @Singleton
-    fun providesInteractor(api: WeatherUndergroundApi, prefs: UmbrellaPreferencesImpl): MainInteractor =
-            MainInteractorImpl(api, prefs)
+    fun providesInteractor(api: WeatherUndergroundApi, prefs: UmbrellaPreferencesImpl): ForecastInteractor =
+            ForecastInteractorImpl(api, prefs)
 
     @Provides
     @Singleton
     fun providesPresenter(
-            interactor: MainInteractor,
+            interactor: ForecastInteractor,
             @Named("mainScheduler") scheduler: Scheduler
-    ): MainPresenter = MainPresenterImpl(interactor, scheduler)
+    ): ForecastPresenter = ForecastPresenterImpl(interactor, scheduler)
 }
