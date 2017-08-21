@@ -7,6 +7,12 @@ import com.jakewharton.threetenabp.AndroidThreeTen
 import timber.log.Timber
 
 class UmbrellaApp : Application() {
+    companion object {
+        val graph: AppComponent by lazy {
+            DaggerAppComponent.builder().build()
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
 

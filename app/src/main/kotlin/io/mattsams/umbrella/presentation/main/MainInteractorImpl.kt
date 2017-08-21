@@ -1,6 +1,6 @@
 package io.mattsams.umbrella.presentation.main
 
-import io.mattsams.umbrella.UmbrellaPreferences
+import io.mattsams.umbrella.UmbrellaPreferencesImpl
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
 import io.mattsams.umbrella.presentation.main.model.CurrentConditionsMapper
 import io.mattsams.umbrella.presentation.main.model.CurrentConditionsModel
@@ -10,7 +10,7 @@ import io.reactivex.Single
 
 class MainInteractorImpl(
         val api: WeatherUndergroundApi,
-        prefs: UmbrellaPreferences
+        prefs: UmbrellaPreferencesImpl
 ) : MainInteractor {
     private val currentMapper = CurrentConditionsMapper(prefs)
     private val dailyMapper = DailyForecastMapper(prefs)
