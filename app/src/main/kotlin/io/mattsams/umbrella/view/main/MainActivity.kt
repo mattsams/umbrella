@@ -1,7 +1,8 @@
-package io.mattsams.umbrella
+package io.mattsams.umbrella.view.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import io.mattsams.umbrella.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
