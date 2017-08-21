@@ -17,7 +17,5 @@ data class FctTime(
         @SerializedName("year")
         val year: Int,
         @SerializedName("yday")
-        val yday: Int,
-        @SerializedName("ampm")
-        val ampm: String
+        val yday: Int
 )

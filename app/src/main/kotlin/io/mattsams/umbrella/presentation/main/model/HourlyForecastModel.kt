@@ -1,4 +1,4 @@
-package io.mattsams.umbrella.presentation.main
+package io.mattsams.umbrella.presentation.main.model
 
 import org.threeten.bp.LocalTime
 

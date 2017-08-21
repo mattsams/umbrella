@@ -2,7 +2,7 @@ package io.mattsams.umbrella
 
 import android.content.SharedPreferences
 
-class UmbrellaPreferences(val prefs: SharedPreferences) {
+class UmbrellaPreferences(private val prefs: SharedPreferences) {
     companion object {
         const val POSTAL_CODE = "postal_code"
         const val UNITS = "units"
