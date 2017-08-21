@@ -1,6 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+ext {
+    android_support_version = '26.+'
+    dagger2_version = '2.11'
+    espresso_version = '2.2.2'
+    gson_version = '2.8.1'
+    junit_version = '4.12'
+    retrofit_version = '2.3.0'
+    rxjava_version = '2.1.3'
+    threetenabp_version = '1.0.5'
+    timber_version = '4.5.1'
+
+    weatherUndergroundApiKey = project.hasProperty("io.mattsams.weatherUndergroundApiKey") ?
+            project.getProperty("io.mattsams.weatherUndergroundApiKey") :
+            System.getenv("WEATHER_UNDERGROUND_API_KEY") ?: ''
+}
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -13,6 +29,8 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField "String", "API_KEY", "\"$project.weatherUndergroundApiKey\""
     }
 
     buildTypes {
@@ -25,18 +43,6 @@ android {
     sourceSets {
         main.java.srcDirs += ["src/main/kotlin"]
     }
-}
-
-ext {
-    android_support_version = '26.+'
-    dagger2_version = '2.11'
-    espresso_version = '2.2.2'
-    gson_version = '2.8.1'
-    junit_version = '4.12'
-    retrofit_version = '2.3.0'
-    rxjava_version = '2.1.3'
-    threetenabp_version = '1.0.5'
-    timber_version = '4.5.1'
 }
 
 dependencies {
