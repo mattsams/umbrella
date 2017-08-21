@@ -7,5 +7,5 @@ interface ConditionsView : MvpView {
     fun setLocation(location: String)
     fun setTemperature(temperature: String)
     fun setConditions(conditions: String)
-    fun updateColor(@ColorRes colorId: Int)
+    fun updateColor(@ColorRes colorId: Int, animated: Boolean)
 }

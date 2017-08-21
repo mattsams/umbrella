@@ -33,7 +33,7 @@ class ConditionsPresenterImpl(
             view.setLocation(conditions.location)
             view.setTemperature(conditions.temperature.toDegrees())
             view.setConditions(conditions.conditions)
-            view.updateColor(conditions.colorId)
+            view.updateColor(conditions.colorId, true)
         }
     }
 }
