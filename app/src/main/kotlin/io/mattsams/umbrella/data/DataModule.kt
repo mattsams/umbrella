@@ -5,10 +5,12 @@ import com.google.gson.Gson
 import com.jakewharton.byteunits.DecimalByteUnit
 import dagger.Module
 import dagger.Provides
+import io.mattsams.umbrella.BuildConfig
 import io.mattsams.umbrella.data.api.ApiModule
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
 import okhttp3.Cache
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -40,6 +42,15 @@ class DataModule {
     @Singleton
     fun providesOkHttpClient(context: Context, cache: Cache?): OkHttpClient {
         val builder = OkHttpClient.Builder()
+
+        if (BuildConfig.DEBUG) {
+            builder.addInterceptor(HttpLoggingInterceptor {
+                Timber.i(it)
+            }.apply {
+                level = HttpLoggingInterceptor.Level.HEADERS
+            })
+        }
+
         /*
         builder.addNetworkInterceptor { chain ->
             val response = chain.proceed(chain.request())
@@ -51,12 +62,6 @@ class DataModule {
                     .removeHeader("Pragma")
                     .header(CACHE_CONTROL, cacheControl.toString()).build()
         }
-
-        builder.addInterceptor(HttpLoggingInterceptor {
-            Timber.i(it)
-        }.apply {
-            level = HttpLoggingInterceptor.Level.HEADERS
-        })
 
         builder.addInterceptor { chain ->
             var request = chain.request()
