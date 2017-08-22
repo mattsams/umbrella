@@ -1,7 +1,6 @@
 package io.mattsams.umbrella.view.forecast
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -41,5 +40,6 @@ class ForecastLayout(context: Context, attrs: AttributeSet)
 
     override fun loadForecast(forecast: List<DailyForecastModel>) {
         recyclerView.adapter = DailyForecastAdapter(context, forecast)
+        recyclerView.scrollTo(0, 0)
     }
 }

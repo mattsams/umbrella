@@ -11,8 +11,8 @@ class CurrentConditionsMapper(private val prefs: UmbrellaPreferences) {
                 location = current.displayLocation.full,
                 conditions = current.weather,
                 temperature = when (prefs.units) {
-                    Units.IMPERIAL -> current.tempF
-                    Units.METRIC -> current.tempC
+                    Units.IMPERIAL -> Math.round(current.tempF).toInt()
+                    Units.METRIC -> Math.round(current.tempC).toInt()
                 },
                 colorId = if (current.tempF >= 60) R.color.warm else R.color.cool
         )

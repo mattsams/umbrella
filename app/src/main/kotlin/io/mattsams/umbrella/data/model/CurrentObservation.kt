@@ -6,9 +6,9 @@ data class CurrentObservation(
         @SerializedName("display_location")
         val displayLocation: DisplayLocation,
         @SerializedName("temp_f")
-        val tempF: Int,
+        val tempF: Double,
         @SerializedName("temp_c")
-        val tempC: Int,
+        val tempC: Double,
         @SerializedName("weather")
         val weather: String
 )

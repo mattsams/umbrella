@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class Temperature(
         @SerializedName("english")
-        val english: Int,
+        val english: Double,
         @SerializedName("metric")
-        val metric: Int
+        val metric: Double
 )

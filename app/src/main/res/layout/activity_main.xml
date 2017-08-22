@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -13,15 +13,14 @@
 
         <include
             android:id="@+id/conditions_widget"
-            layout="@layout/widget_conditions"/>
+            layout="@layout/widget_conditions" />
 
         <include
             android:id="@+id/forecast_layout"
             layout="@layout/view_forecast"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/conditions_widget"/>
+            android:layout_below="@+id/conditions_widget" />
 
     </RelativeLayout>
-
 </android.support.design.widget.CoordinatorLayout>

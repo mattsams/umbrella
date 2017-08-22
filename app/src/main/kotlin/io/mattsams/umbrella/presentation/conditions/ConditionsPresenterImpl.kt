@@ -1,5 +1,8 @@
 package io.mattsams.umbrella.presentation.conditions
 
+import io.mattsams.umbrella.EventBus
+import io.mattsams.umbrella.InvalidData
+import io.mattsams.umbrella.RefreshData
 import io.mattsams.umbrella.mvp.SimplePresenter
 import io.mattsams.umbrella.presentation.conditions.model.CurrentConditionsModel
 import io.mattsams.umbrella.toDegrees
@@ -14,7 +17,19 @@ class ConditionsPresenterImpl(
 
     override fun attach(view: ConditionsView) {
         super.attach(view)
+        rx(
+                EventBus.listen<RefreshData>()
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(scheduler)
+                        .subscribe({
+                            load()
+                        }, {
+                            Timber.e(it)
+                        })
+        )
+    }
 
+    private fun load() {
         rx(
                 interactor
                         .fetchCurrent()
@@ -24,6 +39,7 @@ class ConditionsPresenterImpl(
                             updateConditions(it)
                         }, {
                             Timber.e(it)
+                            EventBus.emit(InvalidData("Unable to load conditions."))
                         })
         )
     }

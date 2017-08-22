@@ -10,8 +10,8 @@ class HourlyForecastMapper(private val prefs: UmbrellaPreferences) {
         return HourlyForecastModel(
                 time = LocalTime.of(forecast.fctTime.hour, forecast.fctTime.min),
                 temp = when (prefs.units) {
-                    Units.IMPERIAL -> forecast.temp.english
-                    Units.METRIC -> forecast.temp.metric
+                    Units.IMPERIAL -> Math.round(forecast.temp.english).toInt()
+                    Units.METRIC -> Math.round(forecast.temp.metric).toInt()
                 },
                 icon = forecast.icon,
                 highlight = highlight
