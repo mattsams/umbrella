@@ -7,18 +7,14 @@ import dagger.Module
 import dagger.Provides
 import io.mattsams.umbrella.data.api.ApiModule
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
-import io.mattsams.umbrella.isNetworkAvailable
 import okhttp3.Cache
-import okhttp3.CacheControl
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import java.io.File
 import java.lang.Exception
-import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -44,9 +40,13 @@ class DataModule {
     @Singleton
     fun providesOkHttpClient(context: Context, cache: Cache?): OkHttpClient {
         val builder = OkHttpClient.Builder()
+        /*
         builder.addNetworkInterceptor { chain ->
             val response = chain.proceed(chain.request())
-            val cacheControl = CacheControl.Builder().maxAge(1, TimeUnit.DAYS).build()
+            val cacheControl = CacheControl.Builder()
+                    .maxAge(1, TimeUnit.HOURS)
+                    .build()
+
             response.newBuilder()
                     .removeHeader("Pragma")
                     .header(CACHE_CONTROL, cacheControl.toString()).build()
@@ -71,6 +71,7 @@ class DataModule {
 
             chain.proceed(request)
         }
+        */
 
         return builder
                 .cache(cache)

@@ -1,14 +1,13 @@
 package io.mattsams.umbrella.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import io.mattsams.umbrella.BuildConfig
 import io.mattsams.umbrella.R
 import io.mattsams.umbrella.binding.bindView
 import io.mattsams.umbrella.view.conditions.ConditionsWidget
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     private val conditionsWidget by bindView<ConditionsWidget>(R.id.conditions_widget)
@@ -20,9 +19,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item?.itemId) {
-            R.id.action_settings -> TODO()
-            else -> return false
+        return when (item?.itemId) {
+            R.id.action_settings -> {
+                startActivity(Intent(this, UmbrellaPreferencesActivity::class.java))
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -30,6 +32,5 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(conditionsWidget.toolbar)
-        Timber.i(BuildConfig.API_KEY)
     }
 }
