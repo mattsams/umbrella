@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
+import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import io.mattsams.umbrella.R
 import io.mattsams.umbrella.binding.bindView
@@ -40,6 +41,11 @@ class ForecastLayout(context: Context, attrs: AttributeSet)
 
     override fun loadForecast(forecast: List<DailyForecastModel>) {
         recyclerView.adapter = DailyForecastAdapter(context, forecast)
-        recyclerView.scrollTo(0, 0)
+        recyclerView.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                recyclerView.scrollToPosition(0)
+                recyclerView.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
     }
 }

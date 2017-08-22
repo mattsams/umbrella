@@ -12,8 +12,6 @@ fun View.injector() = context.injector()
 
 fun Int.toDegrees() = "${this}°"
 
-fun Context.pxToDp(px: Double): Int = (px / resources.displayMetrics.density).toInt()
-
 fun Context.dpToPx(dp: Double): Int = (dp * resources.displayMetrics.density).toInt()
 
 fun Context.isNetworkAvailable(): Boolean {

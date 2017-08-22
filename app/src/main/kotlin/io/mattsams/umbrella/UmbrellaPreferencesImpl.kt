@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 
 class UmbrellaPreferencesImpl(private val prefs: SharedPreferences) : UmbrellaPreferences {
     companion object {
-        const val DEFAULT_POSTAL_CODE = "40601" // Frankfort, KY
+        const val DEFAULT_POSTAL_CODE = "55404"
         val DEFAULT_UNITS = Units.IMPERIAL
     }
 
