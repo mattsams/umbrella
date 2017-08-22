@@ -4,4 +4,5 @@
     <dimen name="margin2">16dp</dimen>
     <dimen name="padding">8dp</dimen>
     <dimen name="padding2">16dp</dimen>
+    <dimen name="forecast_icon_margin">4dp</dimen>
 </resources>

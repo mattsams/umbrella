@@ -5,7 +5,7 @@ import io.mattsams.umbrella.UmbrellaPreferencesImpl
 import io.mattsams.umbrella.data.api.WeatherUndergroundApi
 import io.mattsams.umbrella.presentation.forecast.model.DailyForecastMapper
 import io.mattsams.umbrella.presentation.forecast.model.DailyForecastModel
-import io.reactivex.Single
+import io.reactivex.Observable
 
 class ForecastInteractorImpl(
         private val api: WeatherUndergroundApi,
@@ -13,10 +13,10 @@ class ForecastInteractorImpl(
 ) : ForecastInteractor {
     private val dailyMapper = DailyForecastMapper(prefs)
 
-    override fun fetchForecast(): Single<List<DailyForecastModel>> {
+    override fun fetchForecast(): Observable<List<DailyForecastModel>> {
         val postalCode = prefs.postalCode ?: UmbrellaPreferencesImpl.DEFAULT_POSTAL_CODE
-        return Single.fromObservable(api.hourly(postalCode).map {
+        return api.hourly(postalCode).map {
             dailyMapper.map(it.hourlyForecast)
-        })
+        }
     }
 }

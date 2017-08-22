@@ -2,8 +2,8 @@ package io.mattsams.umbrella.presentation.conditions
 
 import io.mattsams.umbrella.mvp.Interactor
 import io.mattsams.umbrella.presentation.conditions.model.CurrentConditionsModel
-import io.reactivex.Single
+import io.reactivex.Observable
 
 interface ConditionsInteractor : Interactor {
-    fun fetchCurrent(): Single<CurrentConditionsModel>
+    fun fetchCurrent(): Observable<CurrentConditionsModel>
 }

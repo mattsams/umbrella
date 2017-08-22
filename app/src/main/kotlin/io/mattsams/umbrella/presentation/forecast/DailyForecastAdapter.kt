@@ -18,6 +18,9 @@ class DailyForecastAdapter(context: Context, private val data: List<DailyForecas
         holder.bind(data[position])
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DailyForecastViewHolder =
-            DailyForecastViewHolder(inflater.inflate(R.layout.view_daily_forecast, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): DailyForecastViewHolder {
+        val vh = DailyForecastViewHolder(inflater.inflate(R.layout.view_daily_forecast, parent, false))
+        vh.init()
+        return vh
+    }
 }

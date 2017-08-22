@@ -1,6 +1,8 @@
 package io.mattsams.umbrella.view.forecast
 
 import android.content.Context
+import android.support.v7.widget.LinearLayoutCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.widget.LinearLayout
@@ -27,6 +29,7 @@ class ForecastLayout(context: Context, attrs: AttributeSet)
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         if (isInEditMode) return
+        recyclerView.layoutManager = LinearLayoutManager(context)
         presenter.attach(this)
     }
 
